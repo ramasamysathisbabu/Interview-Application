@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Virtusa Corporation</title>
+
+
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"
+	src="js/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"
+	src="js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: powderblue;">
+	<div class="container">
+
+		<h1>Schedule Interview</h1>
+
+		<form class="form-group" action="/candidateEdit"
+			th:action="@{/candidateEdit}" method="post">
+			<input th:type="hidden" name="id" th:field="${candidate.id}" />
+
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="recruiter_name">Recruiter Name:</label>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" id="recruiter_name"
+						placeholder="current User" />
+				</div>
+			</div>
+			<br /> <br />
+
+
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="content">Candidate Name:</label>
+				</div>
+
+
+				<div class="col-md-1">
+
+					<select>
+						<option
+							th:each="prefix : ${T(com.interview.EnumConstants.Prefix).values()}"
+							th:value="${prefix}" th:text="${prefix.displayName}"
+							th:field="${candidate.prefix}"></option>
+					</select>
+				</div>
+				<div class="col-md-2">
+					<input type="text" class="form-control" id="candidate_firstName"
+						placeholder="First Name" th:field="${candidate.firstName}" />
+				</div>
+				<div class="col-md-2">
+					<input type="text" class="form-control" id="candidate_middle_name"
+						placeholder="Middle Name" th:field="${candidate.middleName}" />
+				</div>
+
+				<div class="col-md-2">
+					<input type="text" class="form-control" id="candidate_lastname"
+						placeholder="Last Name" th:field="${candidate.lastName}" />
+				</div>
+
+				<div class="col-md-1">
+					<select>
+						<option
+							th:each="suffix : ${T(com.interview.EnumConstants.Suffix).values()}"
+							th:value="${suffix}" th:text="${suffix.displayName}"
+							th:field="${candidate.suffix}"></option>
+					</select>
+
+				</div>
+
+			</div>
+			<br /> <br />
+
+
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="content">Candidate Phone.No:</label>
+				</div>
+				<div class="col-md-2">
+					<input type="text" class="form-control" id="phone_number"
+						placeholder="645-593-59741" th:field="${candidate.phoneNumber}" />
+				</div>
+			</div>
+			<br /> <br />
+
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="content">Candidate Email Id:</label>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" id="email_id"
+						placeholder="sample@email.com"
+						th:field="${candidate.emailAddress}" />
+				</div>
+			</div>
+			<br /> <br />
+
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="content">Candiate Skype Id:</label>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" id="skype_id"
+						placeholder="sample@skype.com" th:field="${candidate.skypeId}" />
+				</div>
+			</div>
+			<br /> <br />
+
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="content">Schedule Date:</label>
+				</div>
+				<div class="col-md-3">
+					<input type="date" class="form-control" id="date"
+						th:field="${candidate.interviewScheduleDate}" />
+				</div>
+			</div>
+			<br /> <br />
+
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="content">Track:</label>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" id="track"
+						placeholder="java, .Net, etc.,"
+						th:field="${candidate.technicalStack}" />
+				</div>
+				<!--  select width="230" STYLE="width: 230px" size="0">
+					<option class="form-control"
+						th:each="track : ${T(com.interview.EnumConstants.Track).values()}"
+						th:value="${track}" th:text="${track.displayName}"
+						th:field="${candidate.technicalStack}"></option>
+				</select-->
+
+			</div>
+			<br /> <br />
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="content">Interviewer Name:</label>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" id="interviewer"
+						placeholder="Interviewer's name"
+						th:field="${candidate.interviewer}" />
+				</div>
+			</div>
+			<br /> <br />
+
+			<div class="form-row">
+				<div class="col-md-2">
+					<label for="content">Resume:</label>
+				</div>
+				<div class="col-md-4">
+					<input type="file" value="file" name="file" id="resume"
+						th:field="${candidate.resume}" />
+				</div>
+			</div>
+			<br /> <br />
+
+
+
+			<button type="submit" class="btn btn-primary">Save</button>
+			<a href="#" th:href="@{/}" class="btn btn-danger" role="button">Cancel</a>
+		</form>
+
+	</div>
+
+</body>
+</html>

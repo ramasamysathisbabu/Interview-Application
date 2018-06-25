@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Virtusa Corporation</title>
+
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}" src="js/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}" src="js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:powderblue;">
+
+    <div class="container">
+
+        <h1  align="center" >Virtusa Corporation</h1>
+        
+        <h2  align="center" >Interview Scheduling portal</h2>
+        
+        <p>
+            <a href="/candidateEdit" th:href="@{/candidateEdit}">New Candidate</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Candidate Name</th>
+                     <th>Candidate Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="candidate : ${candidateList}">
+                    <td th:text="${candidate.id}">1</td>
+                    <td th:text="${candidate.firstName}"></td>
+                    <td th:text="${candidate.emailAddress}"></td>
+                    <td>
+                        <a href="/candidateEdit/1" th:href="@{/candidateEdit/__${candidate.id}__}">Edit</a>
+                        <a href="/candidateDelete/1" th:href="@{/candidateDelete/__${candidate.id}__}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
